@@ -3735,7 +3735,7 @@ function calcs.offence(env, actor, activeSkill)
 					bleedStacksUncapped = bleedStacksUncapped * activeTotems
 				end
 				local bleedStacks = m_min(maxStacks, bleedStacksUncapped)
-				local chanceToHitInOneSecInterval = 1 - m_pow(1 - (output.HitChance / 100), output.Speed)
+				local chanceToHitInOneSecInterval = 1 - m_pow(1 - (output.HitChance / 100), output.Speed < 0 and 0 or output.Speed)
 				local BleedDPSUncapped = (baseVal * effectMod * rateMod) * bleedStacks * chanceToHitInOneSecInterval * effMult
 				local BleedDPSCapped = m_min(BleedDPSUncapped, data.misc.DotDpsCap)
 				local MinBleedDPSUncapped = (baseMinVal * effectMod * rateMod) * bleedStacks * chanceToHitInOneSecInterval * effMult
